@@ -10,7 +10,7 @@ Add the following to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-tauri-plugin-machine-uid = "0.1.2"
+tauri-plugin-machine-uid = "0.1.3"
 ```
 
 Add the following typescript bindings if you want:
@@ -35,21 +35,21 @@ fn main() {
 Then you can use it in your application (if you installed the typescript bindings):
 
 ```typescript
-import { commands } from '@skipperndt/plugin-machine-uid';
+import { commands } from "@skipperndt/plugin-machine-uid";
 
 // Get the unique device identifier
 const result = await commands.getMachineUid();
 if (result.status === "ok") {
-    console.log(result.data.id); // e.g. "550e8400-e29b-41d4-a716-446655440000"
+  console.log(result.data.id); // e.g. "550e8400-e29b-41d4-a716-446655440000"
 }
 ```
 
 The `getMachineUid()` function returns a `Result` type with the following structure:
 
 ```typescript
-type Result<T, E> = 
-    | { status: "ok"; data: { id: string | null } }
-    | { status: "error"; error: E };
+type Result<T, E> =
+  | { status: "ok"; data: { id: string | null } }
+  | { status: "error"; error: E };
 ```
 
 If you use Rust, import the MachineUidExt trait:
